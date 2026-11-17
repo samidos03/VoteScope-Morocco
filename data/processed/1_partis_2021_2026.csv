@@ -1,0 +1,18 @@
+﻿annee,parti,sieges_locaux,sieges_regionaux,sieges_total,pct_voix_locales,pct_sieges_locaux,pct_voix_regionales,source,remarque
+2021,RNI,,,102,27.69,,,"Communiqué Intérieur définitif 9/09/2021 (SNRT, Bladi) ; % voix: Wikipedia",% voix à vérifier; split local/régional non disponible
+2021,PAM,,,86,18.47,,,"Communiqué Intérieur définitif 9/09/2021 (SNRT, Bladi) ; % voix: Wikipedia",Wikipedia indique 87 sièges; % voix à vérifier
+2021,PI,,,81,16.87,,,"Communiqué Intérieur définitif 9/09/2021 (SNRT, Bladi) ; % voix: Wikipedia",% voix à vérifier
+2021,USFP,,,35,,,,"Communiqué Intérieur définitif 9/09/2021 (SNRT, Bladi)",
+2021,MP,,,29,,,,"Communiqué Intérieur définitif 9/09/2021 (SNRT, Bladi)",
+2021,PPS,,,21,,,,"Communiqué Intérieur définitif 9/09/2021 (SNRT, Bladi)",
+2021,UC,,,18,,,,"Communiqué Intérieur définitif 9/09/2021 (SNRT, Bladi)",
+2021,PJD,,,13,,,,"Communiqué Intérieur définitif 9/09/2021 (SNRT, Bladi)",Provisoire: 12
+2021,AUTRES,,,10,,,,Calculé: 395 - somme des 8 partis,Dérivé
+2026,PAM,85,12,97,21.3,27.9,22.0,Policy paper PCNS 31/26 (Alaoui Belghiti) ; total: p.16 + latele.ch,Total 97 = 85+12
+2026,RNI,57,9,66,14.7,18.7,,Policy paper PCNS 31/26 (Alaoui Belghiti),
+2026,PI,52,13,65,15.3,17.0,,Policy paper PCNS 31/26 (Alaoui Belghiti),751 672 voix locales
+2026,PJD,44,10,54,14.2,14.4,,Policy paper PCNS 31/26 (Alaoui Belghiti) ; total: latele.ch,Régional (10) dérivé: 54-44
+2026,USFP,15,11,26,6.7,4.9,6.8,Policy paper PCNS 31/26 (Alaoui Belghiti),
+2026,PPS,10,9,19,5.0,3.3,5.0,Policy paper PCNS 31/26 (Alaoui Belghiti),~5% sur les deux bulletins
+2026,MP,,,,7.3,6.6,,Policy paper PCNS 31/26 (Alaoui Belghiti),Sièges non donnés; MP+UC = 46 (373 - autres 6 partis)
+2026,UC,,,,4.6,4.3,,Policy paper PCNS 31/26 (Alaoui Belghiti),Sièges non donnés

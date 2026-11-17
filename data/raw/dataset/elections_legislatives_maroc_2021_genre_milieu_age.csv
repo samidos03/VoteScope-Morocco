@@ -1,0 +1,12 @@
+
+annee,date_reference,categorie,modalite,pourcentage,nombre_total_inscrits,source
+2021,2021-07-30,Genre,Hommes,54,17983490,Le Matin
+2021,2021-07-30,Genre,Femmes,46,17983490,Le Matin
+2021,2021-07-30,Milieu de residence,Urbain,54,17983490,Le Matin
+2021,2021-07-30,Milieu de residence,Rural,46,17983490,Le Matin
+2021,2021-07-30,Tranche d'age,18-24 ans,8,17983490,Le Matin
+2021,2021-07-30,Tranche d'age,25-34 ans,,,Le Matin
+2021,2021-07-30,Tranche d'age,35-44 ans,21,17983490,Le Matin
+2021,2021-07-30,Tranche d'age,45-54 ans,20,17983490,Le Matin
+2021,2021-07-30,Tranche d'age,55-59 ans,,,Le Matin
+2021,2021-07-30,Tranche d'age,60 ans et plus,23,17983490,Le Matin

@@ -1,0 +1,31 @@
+﻿annee,parti,nom_parti,sieges_total,sieges_locaux,sieges_regionaux,pct_voix_locales,pct_voix_regionales,source
+2016,PJD,Parti Justice et Développement,125.0,98.0,27.0,,,Données parlementaires 2016 (fournies)
+2016,PAM,Parti Authenticité et Modernité,102.0,81.0,21.0,,,Données parlementaires 2016 (fournies)
+2016,PI,Parti de l'Istiqlal,46.0,35.0,11.0,,,Données parlementaires 2016 (fournies)
+2016,RNI,Rassemblement National des Indépendants,37.0,28.0,9.0,,,Données parlementaires 2016 (fournies)
+2016,MP,Mouvement Populaire,27.0,20.0,7.0,,,Données parlementaires 2016 (fournies)
+2016,USFP,Union Socialiste des Forces Populaires,20.0,14.0,6.0,,,Données parlementaires 2016 (fournies)
+2016,UC,Union Constitutionnelle,19.0,15.0,4.0,,,Données parlementaires 2016 (fournies)
+2016,PPS,Parti du Progrès et du Socialisme,12.0,7.0,5.0,,,Données parlementaires 2016 (fournies)
+2016,MDS,Mouvement Démocratique et Social,3.0,3.0,0.0,,,Données parlementaires 2016 (fournies)
+2016,FGD,Fédération de la Gauche Démocratique,2.0,2.0,0.0,,,Données parlementaires 2016 (fournies)
+2016,PUD,Parti Unité et Développement,1.0,1.0,0.0,,,Données parlementaires 2016 (fournies)
+2016,PGVM,Parti de la Gauche Verte Marocaine,1.0,1.0,0.0,,,Données parlementaires 2016 (fournies)
+2021,RNI,Rassemblement National des Indépendants,102.0,,,,,Liste Chambre des Représentants 2021 (fournie); ventilation local/régional non fournie
+2021,PAM,Parti Authenticité et Modernité,87.0,,,,,Liste Chambre des Représentants 2021 (fournie); ventilation local/régional non fournie
+2021,PI,Parti de l'Istiqlal,81.0,,,,,Liste Chambre des Représentants 2021 (fournie); ventilation local/régional non fournie
+2021,USFP,Union Socialiste des Forces Populaires,34.0,,,,,Liste Chambre des Représentants 2021 (fournie); ventilation local/régional non fournie
+2021,MP,Mouvement Populaire,28.0,,,,,Liste Chambre des Représentants 2021 (fournie); ventilation local/régional non fournie
+2021,PPS,Parti du Progrès et du Socialisme,22.0,,,,,Liste Chambre des Représentants 2021 (fournie); ventilation local/régional non fournie
+2021,UC,Union Constitutionnelle,18.0,,,,,Liste Chambre des Représentants 2021 (fournie); ventilation local/régional non fournie
+2021,PJD,Parti Justice et Développement,13.0,,,,,Liste Chambre des Représentants 2021 (fournie); ventilation local/régional non fournie
+2021,MDS,Mouvement Démocratique et Social,5.0,,,,,Liste Chambre des Représentants 2021 (fournie); ventilation local/régional non fournie
+2021,FFD,Front des Forces Démocratiques,3.0,,,,,Liste Chambre des Représentants 2021 (fournie); ventilation local/régional non fournie
+2021,CNI,Congrès National Ittihadi,1.0,,,,,Liste Chambre des Représentants 2021 (fournie); ventilation local/régional non fournie
+2021,PSU,Parti Socialiste Unifié,1.0,,,,,Liste Chambre des Représentants 2021 (fournie); ventilation local/régional non fournie
+2026,PAM,Parti Authenticité et Modernité,97.0,85.0,12.0,21.3,22.0,Policy Paper 31/26 (total = local + régional)
+2026,RNI,Rassemblement National des Indépendants,66.0,57.0,9.0,14.7,,Policy Paper 31/26; 718 630 voix locales
+2026,PI,Parti de l'Istiqlal,65.0,52.0,13.0,15.3,,Policy Paper 31/26; 751 672 voix locales
+2026,PJD,Parti Justice et Développement,,44.0,,14.2,,Policy Paper 31/26; sièges régionaux non indiqués
+2026,USFP,Union Socialiste des Forces Populaires,26.0,15.0,11.0,6.7,6.8,Policy Paper 31/26
+2026,PPS,Parti du Progrès et du Socialisme,19.0,10.0,9.0,5.0,5.0,Policy Paper 31/26; ~5% sur chaque bulletin

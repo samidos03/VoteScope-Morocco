@@ -1,0 +1,19 @@
+﻿indicateur,valeur,unite,source
+date_scrutin,2026-09-23,date,PCNS PP-31/26
+taux_participation_national,38.08,%,PCNS PP-31/26
+sieges_locaux,305,sièges,PCNS PP-31/26
+sieges_regionaux,90,sièges,PCNS PP-31/26
+total_sieges,395,sièges,PCNS PP-31/26
+circonscriptions_locales,92,nombre,PCNS PP-31/26
+circonscriptions_regionales,12,nombre,PCNS PP-31/26
+circ_2_3_sieges,59,nombre (156 mandats),PCNS PP-31/26
+circ_4_6_sieges,33,nombre (149 mandats),PCNS PP-31/26
+ecart_participation_max_min,67,"points (Tarfaya 88,45 vs Moulay Rachid 21,26)",PCNS PP-31/26
+pct_voix_locales_sans_siege,32.1,%,PCNS PP-31/26
+pct_voix_regionales_sans_siege,7.2,%,PCNS PP-31/26
+femmes_elues_locales,17,personnes,PCNS PP-31/26
+femmes_deputees_total,107,personnes,PCNS PP-31/26
+partis_representes,14,nombre,PCNS PP-31/26
+sieges_8_principaux_partis,373,"sièges (94,4%)",PCNS PP-31/26
+pct_voix_4_principaux_partis_locaux,65.5,%,PCNS PP-31/26
+pct_sieges_locaux_4_principaux_partis,78,% (environ),PCNS PP-31/26

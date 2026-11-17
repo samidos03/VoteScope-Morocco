@@ -1,0 +1,13 @@
+﻿Annee,Periode,Taux_chomage_national,Taux_chomage_urbain,Taux_chomage_rural,Methodologie,Remarque
+2016,Annee,9.9,14.2,4.0,ENE (ancienne),
+2017,Annee,10.2,14.7,4.0,ENE (ancienne),
+2018,Annee,9.5,13.8,3.6,ENE (ancienne),Valeur revisee par le HCP (9.8 publie initialement en 2019)
+2019,Annee,9.2,12.9,3.7,ENE (ancienne),
+2020,Annee,11.9,15.8,5.9,ENE (ancienne),COVID-19 et secheresse
+2021,Annee,12.3,16.9,5.0,ENE (ancienne),
+2022,Annee,11.8,15.8,5.2,ENE (ancienne),
+2023,Annee,13.0,,,ENE (ancienne),Repartition urbain/rural non recuperee
+2024,Annee,13.3,16.9,6.8,ENE (ancienne),
+2025,Annee,13.0,16.4,6.6,ENE (ancienne),
+2026,T1,10.8,13.5,6.1,"EMO (nouvelle, chomage strict)",Rupture de serie : non comparable avec 2016-2025 publie en ENE
+2026,T2,9.5,11.9,5.4,"EMO (nouvelle, chomage strict)",Rupture de serie : non comparable avec 2016-2025 publie en ENE

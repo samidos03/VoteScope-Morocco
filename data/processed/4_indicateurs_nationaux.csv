@@ -1,0 +1,11 @@
+﻿indicateur,valeur_2021,valeur_2026,unite,source
+taux_participation,50.35,38.08,%,2021: Intérieur (via h24info/bladi); 2026: PCNS p.5
+sieges_total,395,395,sièges,PCNS p.17
+sieges_locaux,305,305,sièges,PCNS p.3
+sieges_regionaux,90,90,sièges,PCNS p.3
+circonscriptions_locales,92,92,nombre,PCNS p.3
+femmes_elues_circonscriptions_locales,6,17,personnes,PCNS p.17
+femmes_deputees_total,96,107,personnes,PCNS p.17
+partis_representes,12,14,nombre,PCNS p.17
+pct_voix_locales_sans_siege,,32.1,%,PCNS p.17
+pct_voix_regionales_sans_siege,,7.2,%,PCNS p.17
