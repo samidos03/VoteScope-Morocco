@@ -77,8 +77,7 @@ def party_color(code: str) -> str:
 
 
 # --------------------------------------------------------------------------- #
-# Vidéos : la première sert de vidéo de présentation de la problématique.
-# Modifiez PROBLEMATIQUE_VIDEO_URL pour choisir une autre vidéo.
+# Vidéos : ressources YouTube (data/external/sources.txt) + vidéo de la problématique.
 # --------------------------------------------------------------------------- #
 def _read_video_links() -> list[str]:
     try:
@@ -89,4 +88,7 @@ def _read_video_links() -> list[str]:
 
 
 VIDEO_LINKS = _read_video_links()
-PROBLEMATIQUE_VIDEO_URL = VIDEO_LINKS[0] if VIDEO_LINKS else "https://www.youtube.com/"
+
+# Vidéo de présentation de la problématique (Boujmaa), servie par Streamlit depuis static/
+PROBLEMATIQUE_VIDEO_FILE = BASE_DIR / "static" / "boujmaa_problematique.mp4"
+PROBLEMATIQUE_VIDEO_URL = "/app/static/boujmaa_problematique.mp4"

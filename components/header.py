@@ -15,7 +15,7 @@ def inject_css() -> None:
     st.markdown(f"<style>{CSS_FILE.read_text(encoding='utf-8')}</style>", unsafe_allow_html=True)
 
 
-def video_button_html(label: str = "Problématique en vidéo", sub: str = "Comprendre le projet en 3 minutes") -> str:
+def video_button_html(label: str = "Problématique en vidéo", sub: str = "Boujmaa pose la question · 54 s") -> str:
     return (
         f'<a class="sidebar-video" href="{PROBLEMATIQUE_VIDEO_URL}" target="_blank" rel="noopener">'
         f'<span class="play-dot">{PLAY_SVG}</span>'

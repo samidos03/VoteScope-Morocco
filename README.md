@@ -17,12 +17,12 @@ Manrope & DM Sans, cartes KPI, sidebar éditoriale).
 | Analyse régionale | **Carte Folium des 12 régions** (parti en tête, sièges, implantation d'un parti) avec infobulle + popup statistiques, fiche région, matrice région × parti |
 | Comparaison des élections | Deux scrutins au choix : volatilité de Pedersen, nombre effectif de partis, basculements |
 | Indicateurs nationaux | Participation, femmes élues, PIB, focus 2026 (urbanisation, profils partisans, fragmentation) |
-| Perspectives 2031 | 3 scénarios réglables (continuité, recomposition, participation), hémicycle 2031, **simulateur de coalition** |
+| Perspectives 2031 | Compte à rebours jusqu'au **30/09/2031**, indicateurs projetés (participation, femmes élues, fragmentation, PIB jusqu'en 2030), **prévision Monte Carlo** des sièges (médiane, fourchette, probabilité d'arriver en tête, probabilité de coalition) et 3 scénarios réglables |
 | À propos | Mission, **vidéo de la problématique**, objectifs, technologies |
 
-Le bouton ▶ **« Problématique en vidéo »** (barre latérale, hero et page À propos) ouvre la première
-vidéo listée dans `data/external/sources.txt`. Pour en choisir une autre, modifiez
-`PROBLEMATIQUE_VIDEO_URL` dans `config/settings.py`.
+La vidéo de la problématique (Boujmaa, 54 s) est dans `static/boujmaa_problematique.mp4` : elle est
+intégrée à l'Accueil et à la page À propos, et le bouton ▶ **« Problématique en vidéo »** l'ouvre en plein écran
+(service des fichiers statiques activé dans `.streamlit/config.toml`).
 
 ## Lancer l'application
 
@@ -42,6 +42,8 @@ components/             # header (sidebar, topbar), cartes KPI, footer
 src/data_loader.py      # chargement des CSV / GeoJSON (cache)
 src/statistics.py       # nb effectif de partis, volatilité de Pedersen
 src/predictions.py      # scénarios 2031 (total ramené à 395 sièges)
+src/forecast.py         # projections d'indicateurs + simulation Monte Carlo 2031
+static/                 # vidéo de la problématique
 src/visualizations.py   # graphiques Plotly + carte Folium
 pages/                  # 8 pages
 data/                   # données brutes et traitées

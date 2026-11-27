@@ -5,7 +5,7 @@ import streamlit as st
 from components.cards import fmt, html, kpi_row, panel_title, section_heading, year_picker
 from components.footer import footer
 from components.header import PLAY_SVG, topbar
-from config.settings import COLORS, LOGO_FILE, MAJORITY, PROBLEMATIQUE_VIDEO_URL, TURNOUT
+from config.settings import COLORS, LOGO_FILE, MAJORITY, PROBLEMATIQUE_VIDEO_FILE, PROBLEMATIQUE_VIDEO_URL, TURNOUT
 from src.data_loader import load_national_indicators, load_national_seats
 from src.visualizations import hemicycle, seat_bars, turnout_donut
 
@@ -37,6 +37,27 @@ html(
 </section>
 """
 )
+
+# ---------------------------------------------------------------- Problématique (vidéo)
+section_heading(
+    "La problématique",
+    "Les élections changent-elles la vie des Marocains\u00a0?",
+    "Boujmaa, citoyen marocain, pose la question à laquelle VoteScope répond avec les chiffres de 2016, 2021 et 2026.",
+)
+v1, v2 = st.columns([1.6, 1], vertical_alignment="center")
+with v1:
+    with st.container(border=True, key="panel_home_video"):
+        st.video(str(PROBLEMATIQUE_VIDEO_FILE))
+with v2:
+    html(
+        """<div class="vs-card" style="padding:26px">
+        <p class="eyebrow">Question de recherche</p>
+        <h3 style="margin:10px 0 12px;font:800 22px/1.35 Manrope, DM Sans, sans-serif" dir="rtl">
+        واش فعلاً الانتخابات التشريعية كتساهم فالتغيير وتحسين الحياة اليومية ديال المغاربة؟</h3>
+        <p style="color:#6e7c74;line-height:1.7;margin:0">Les élections législatives contribuent-elles réellement
+        à améliorer le quotidien des Marocains (santé, éducation, emploi)&nbsp;? Et comment le mesurer, chiffres à l'appui,
+        après chaque scrutin&nbsp;?</p></div>"""
+    )
 
 # ---------------------------------------------------------------- Chronologie
 section_heading(

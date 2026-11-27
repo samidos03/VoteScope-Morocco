@@ -5,7 +5,7 @@ import streamlit as st
 from components.cards import dark_strip, html, page_intro, panel_title
 from components.footer import footer
 from components.header import PLAY_SVG, topbar
-from config.settings import LOGO_FILE, PROBLEMATIQUE_VIDEO_URL, VIDEO_LINKS
+from config.settings import LOGO_FILE, PROBLEMATIQUE_VIDEO_FILE, PROBLEMATIQUE_VIDEO_URL, VIDEO_LINKS
 
 topbar("À propos du projet")
 page_intro(
@@ -38,19 +38,19 @@ with st.container(border=True, key="panel_about_video"):
     panel_title("La problématique en vidéo", "Cliquez sur le symbole ▶ pour ouvrir la vidéo de présentation")
     v1, v2 = st.columns([1.3, 1])
     with v1:
-        st.video(PROBLEMATIQUE_VIDEO_URL)
+        st.video(str(PROBLEMATIQUE_VIDEO_FILE))
     with v2:
         html(
             f'<a class="video-card" href="{PROBLEMATIQUE_VIDEO_URL}" target="_blank" rel="noopener">'
             f'<span class="play-dot">{PLAY_SVG}</span><span><strong>Présentation de la problématique</strong>'
-            f"<small>Ouvrir sur YouTube</small></span></a>"
+            f"<small>Boujmaa · 54 s · ouvrir en plein écran</small></span></a>"
         )
         html("<p style='color:#738078;margin:16px 0 6px;font-size:13px'><b>Ressources vidéo complémentaires</b></p>")
-        for i, url in enumerate(VIDEO_LINKS[1:], start=2):
+        for i, url in enumerate(VIDEO_LINKS, start=1):
             html(
                 f'<a class="video-card" style="margin-bottom:8px" href="{url}" target="_blank" rel="noopener">'
                 f'<span class="play-dot" style="background:#10293f;box-shadow:none">{PLAY_SVG}</span>'
-                f"<span><strong>Vidéo {i}</strong><small>{url.replace('https://www.', '')}</small></span></a>"
+                f"<span><strong>Ressource YouTube {i}</strong><small>{url.replace('https://www.', '')}</small></span></a>"
             )
 
 c, d = st.columns([1.1, 0.9])
