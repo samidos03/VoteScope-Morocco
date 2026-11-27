@@ -414,6 +414,6 @@ button[data-variant="segmented_control"][aria-checked="true"] {
 button[data-variant="segmented_control"][aria-checked="true"] * { color: #fff !important; }
 
 /* ---------- Lecteur vidéo + texte arabe ---------- */
-.vs-video { position: relative; overflow: hidden; border-radius: 12px; background: #10293f; line-height: 0; }
-.vs-video video { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: #10293f; }
+.vs-video { position: relative; overflow: hidden; border-radius: 12px; background: #eceee9; line-height: 0; }
+.vs-video video { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: #eceee9; }
 [dir="rtl"], .ar { font-family: "Cairo", "DM Sans", sans-serif !important; }

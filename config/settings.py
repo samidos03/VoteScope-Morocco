@@ -92,4 +92,4 @@ VIDEO_LINKS = _read_video_links()
 # Vidéo de présentation de la problématique (Boujmaa), servie par Streamlit depuis static/
 PROBLEMATIQUE_VIDEO_FILE = BASE_DIR / "static" / "boujmaa_problematique.mp4"
 PROBLEMATIQUE_VIDEO_URL = "/app/static/boujmaa_problematique.mp4"
-PROBLEMATIQUE_POSTER_URL = "/app/static/boujmaa_poster.jpg"
+PROBLEMATIQUE_POSTER_URL = "/app/static/boujmaa_poster.jpg?v=2"
