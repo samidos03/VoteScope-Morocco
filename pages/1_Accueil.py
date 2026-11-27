@@ -13,13 +13,13 @@ topbar("Vue d'ensemble")
 
 seats = load_national_seats()
 ind = load_national_indicators()
-logo_b64 = base64.b64encode(LOGO_FILE.read_bytes()).decode()
+hero_b64 = base64.b64encode((LOGO_FILE.parent / "hero-background.jpg").read_bytes()).decode()
 
 # ---------------------------------------------------------------- Hero
 html(
     f"""
-<section class="hero">
-  <div class="hero-art"><img src="data:image/png;base64,{logo_b64}" alt="VoteScope"></div>
+<section class="hero" style="background-image:url(data:image/jpeg;base64,{hero_b64})">
+  <div class="hero-shade"></div>
   <div class="hero-content">
     <div class="hero-tag"><span></span> Intelligence électorale · Maroc</div>
     <div class="hero-title">VoteScope <em>Morocco</em></div>
@@ -52,16 +52,17 @@ summaries = {
     2026: "Le PAM arrive en tête, le PJD remonte à 54 sièges ; participation en net recul.",
 }
 gradients = {
-    2016: "linear-gradient(135deg,#7a5a1f,#c69b45)",
-    2021: "linear-gradient(135deg,#0b1c27,#10293f)",
-    2026: "linear-gradient(135deg,#7d1219,#b8202a)",
+    2016: "linear-gradient(0deg,#5c4317ee,#c69b4566)",
+    2021: "linear-gradient(0deg,#0b1c27ee,#10293f66)",
+    2026: "linear-gradient(0deg,#7d1219ee,#b8202a66)",
 }
+positions = {2016: "15% center", 2021: "50% 20%", 2026: "85% center"}
 cards = ""
 for y in (2016, 2021, 2026):
     top = seats[seats["annee"] == y].iloc[0]
     cards += f"""
     <article class="vs-card election-card">
-      <div class="election-image" style="background:{gradients[y]}">
+      <div class="election-image" style="background:{gradients[y]}, url(data:image/jpeg;base64,{hero_b64}) {positions[y]} / 700px">
         <span>Élection législative · {ind[y].get('date_scrutin', '')}</span><strong>{y}</strong>
       </div>
       <div class="election-body">
