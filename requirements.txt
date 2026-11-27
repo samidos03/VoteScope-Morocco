@@ -7,3 +7,4 @@ streamlit-folium>=0.20
 branca>=0.7
 openpyxl>=3.1
 requests>=2.31
+scikit-learn>=1.3

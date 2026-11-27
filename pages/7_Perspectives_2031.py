@@ -1,12 +1,13 @@
 import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
+from streamlit_folium import st_folium
 
 from components.cards import dark_strip, fmt, html, kpi_row, page_intro, panel_title, section_heading
 from components.footer import footer
 from components.header import topbar
 from config.settings import COLORS, MAJORITY, TURNOUT, party_color
-from src.data_loader import load_gdp, load_national_indicators, load_party_profiles_by_turnout, seats_pivot
+from src.data_loader import load_gdp, load_geojson, load_national_indicators, load_party_profiles_by_turnout, seats_pivot
 from src.forecast import (
     ELECTION_2031,
     coalition_probability,
@@ -16,9 +17,10 @@ from src.forecast import (
     simulate_seats,
     summarize,
 )
+from src.ml_model import geojson_2031, run_ml
 from src.predictions import scenario_continuity, scenario_recomposition, scenario_turnout
 from src.statistics import effective_number_of_parties
-from src.visualizations import _layout, compare_bars, hemicycle
+from src.visualizations import _layout, compare_bars, folium_region_map, hemicycle
 
 CFG = {"displayModeBar": False}
 
@@ -210,6 +212,97 @@ with st.container(border=True, key="panel_fc_coal"):
         f"<span>{'✔' if ok else '✖'}</span><p><b>{fmt(prob, 1)} %</b> des simulations donnent la majorité à cette coalition "
         f"(médiane : <b>{med} sièges</b> sur 395, majorité à 198).</p></div>"
     )
+
+# ------------------------------------------------------------------ modèle ML (scikit-learn)
+section_heading("Machine Learning", "Un modèle simple, testé sur 2026",
+                "Régression Ridge (scikit-learn) : prévoir la part de sièges de chaque parti dans chaque région à partir des deux scrutins précédents.")
+
+
+@st.cache_data(show_spinner="Entraînement du modèle…")
+def ml_results():
+    return run_ml()
+
+
+ml = ml_results()
+html(
+    """<div class="vs-card" style="padding:20px 24px;margin-bottom:6px">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px">
+      <div><p class="eyebrow">1 · Données</p><p style="margin:6px 0 0;color:#526159;font-size:14px">
+      12 régions × 8 partis : part des sièges en 2016, 2021 et 2026 (carte régionale).</p></div>
+      <div><p class="eyebrow">2 · Apprentissage</p><p style="margin:6px 0 0;color:#526159;font-size:14px">
+      Entrées : part en <b>t-2</b> et <b>t-1</b> + le parti. Sortie : part au scrutin suivant.</p></div>
+      <div><p class="eyebrow">3 · Test</p><p style="margin:6px 0 0;color:#526159;font-size:14px">
+      On prédit 2026 région par région, sans montrer la région au modèle (leave-one-region-out).</p></div>
+      <div><p class="eyebrow">4 · Prévision</p><p style="margin:6px 0 0;color:#526159;font-size:14px">
+      Le modèle appliqué à 2021 et 2026 donne 2031, puis les sièges de chaque région sont répartis.</p></div>
+    </div></div>"""
+)
+
+scores = ml["scores"]
+best = scores.loc[scores["Erreur moyenne (points de %)"].idxmin(), "Méthode"]
+m1, m2 = st.columns([1, 1.4])
+with m1:
+    with st.container(border=True, key="panel_ml_scores"):
+        panel_title("Le modèle est-il fiable ?", "Erreur moyenne sur 2026 (plus c'est bas, mieux c'est)")
+        sc = scores.iloc[::-1]
+        fig = go.Figure(go.Bar(
+            x=sc["Erreur moyenne (points de %)"], y=sc["Méthode"], orientation="h",
+            marker=dict(color=[COLORS["red"] if "ML" in m else "#b9c4bd" for m in sc["Méthode"]], cornerradius=5),
+            text=[f"{v:.1f} pts".replace(".", ",") for v in sc["Erreur moyenne (points de %)"]], textposition="outside",
+            hovertemplate="%{y} : %{x:.2f} points<extra></extra>",
+        ))
+        fig.update_xaxes(range=[0, scores["Erreur moyenne (points de %)"].max() * 1.35], showticklabels=False, showgrid=False)
+        st.plotly_chart(_layout(fig, 230, bargap=0.35), width="stretch", config=CFG)
+        ridge_err = scores.iloc[0, 1]
+        html(f'<div class="data-alert"><span>ⓘ</span><p>Le modèle se trompe en moyenne de <b>{fmt(ridge_err, 1)} points</b> '
+             f"sur la part d'un parti dans une région. Il fait mieux que « refaire 2021 », mais la meilleure méthode sur ce test "
+             f"reste <b>{best.lower()}</b> : avec trois scrutins, un modèle simple reste prudent.</p></div>")
+with m2:
+    with st.container(border=True, key="panel_ml_backtest"):
+        panel_title("Test : prévu vs réel en 2026", "Chaque point = un parti dans une région · la diagonale = prévision parfaite")
+        bt = ml["backtest"]
+        fig = go.Figure()
+        lim = max(bt["reel_2026"].max(), bt["predit_2026"].max()) + 3
+        fig.add_trace(go.Scatter(x=[0, lim], y=[0, lim], mode="lines", line=dict(color="#b9c4bd", dash="dot"),
+                                 hoverinfo="skip", showlegend=False))
+        for party in bt["parti"].unique():
+            d = bt[bt["parti"] == party]
+            fig.add_trace(go.Scatter(
+                x=d["reel_2026"], y=d["predit_2026"], mode="markers", name=party,
+                marker=dict(size=10, color=party_color(party), line=dict(color="white", width=1)),
+                text=d["region"], hovertemplate=f"<b>{party}</b> · %{{text}}<br>réel %{{x:.1f}} % · prévu %{{y:.1f}} %<extra></extra>",
+            ))
+        fig.update_xaxes(title="Part réelle 2026 (%)", range=[0, lim])
+        fig.update_yaxes(title="Part prévue (%)", range=[0, lim])
+        fig = _layout(fig, 360)
+        fig.update_layout(legend=dict(orientation="v", x=1.02, y=1, yanchor="top"), margin=dict(r=80))
+        st.plotly_chart(fig, width="stretch", config=CFG)
+
+n31 = ml["national31"]
+m3, m4 = st.columns([1, 1])
+with m3:
+    with st.container(border=True, key="panel_ml_national"):
+        top_ml = n31.index[0]
+        panel_title("Sièges 2031 selon le modèle ML", f"Somme des 12 régions · {top_ml} en tête avec {int(n31.iloc[0]['sieges_2031'])} sièges")
+        d = n31.head(10)
+        st.plotly_chart(compare_bars(d["sieges_2026"], d["sieges_2031"], "2026 (observé)", "2031 (modèle ML)", height=380),
+                        width="stretch", config=CFG)
+with m4:
+    with st.container(border=True, key="panel_ml_map"):
+        panel_title("Parti en tête par région en 2031 (modèle ML)", "Survolez ou cliquez une région pour le détail")
+        gj31 = geojson_2031(load_geojson(), ml["regional31"])
+        st_folium(folium_region_map(gj31, 2031, "lead"), height=380, use_container_width=True,
+                  returned_objects=[], key="ml_map_2031")
+
+with st.expander("Détails du modèle ML (coefficients et prévisions par région)"):
+    coefs = ml["coefs"].rename("Coefficient").to_frame()
+    coefs.loc["Constante"] = ml["intercept"]
+    st.markdown("Part prévue = constante + a × part(t-2) + b × part(t-1) + effet du parti. "
+                "Un coefficient positif pour un parti signifie qu'il tend à progresser d'un scrutin à l'autre.")
+    st.dataframe(coefs.round(3), width="stretch")
+    reg_tab = ml["regional31"].pivot_table(index="region", columns="parti", values="sieges_2031", fill_value=0)
+    reg_tab = reg_tab.loc[:, reg_tab.sum().sort_values(ascending=False).index]
+    st.dataframe(reg_tab, width="stretch")
 
 # ------------------------------------------------------------------ scénarios réglables
 section_heading("Explorer les scénarios", "Trois futurs possibles, réglables à la main")

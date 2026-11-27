@@ -4,7 +4,7 @@ import streamlit as st
 
 from components.cards import dark_strip, html, page_intro, panel_title
 from components.footer import footer
-from components.header import PLAY_SVG, topbar
+from components.header import PLAY_SVG, topbar, video_player
 from config.settings import LOGO_FILE, PROBLEMATIQUE_VIDEO_FILE, PROBLEMATIQUE_VIDEO_URL, VIDEO_LINKS
 
 topbar("À propos du projet")
@@ -38,7 +38,7 @@ with st.container(border=True, key="panel_about_video"):
     panel_title("La problématique en vidéo", "Cliquez sur le symbole ▶ pour ouvrir la vidéo de présentation")
     v1, v2 = st.columns([1.3, 1])
     with v1:
-        st.video(str(PROBLEMATIQUE_VIDEO_FILE))
+        video_player()
     with v2:
         html(
             f'<a class="video-card" href="{PROBLEMATIQUE_VIDEO_URL}" target="_blank" rel="noopener">'

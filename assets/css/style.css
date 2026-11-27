@@ -1,7 +1,7 @@
 /* ======================================================================== */
 /* VoteScope Morocco — thème inspiré du design Figma Make « elections-2.0 »   */
 /* ======================================================================== */
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=Cairo:wght@600;700;800&display=swap");
 
 :root {
   --red: #b8202a;
@@ -412,3 +412,8 @@ button[data-variant="segmented_control"][aria-checked="true"] {
   background: var(--navy) !important; color: #fff !important; border-color: var(--navy) !important;
 }
 button[data-variant="segmented_control"][aria-checked="true"] * { color: #fff !important; }
+
+/* ---------- Lecteur vidéo + texte arabe ---------- */
+.vs-video { position: relative; overflow: hidden; border-radius: 12px; background: #10293f; line-height: 0; }
+.vs-video video { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: #10293f; }
+[dir="rtl"], .ar { font-family: "Cairo", "DM Sans", sans-serif !important; }
